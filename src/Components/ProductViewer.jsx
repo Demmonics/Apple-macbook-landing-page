@@ -3,14 +3,7 @@ import clsx from 'clsx'
 import { Canvas } from "@react-three/fiber";
 import {Box, OrbitControls} from "@react-three/drei"
 import React, { Suspense } from 'react';
-import { useGLTF } from '@react-three/drei';
 
-
-function Model() {
-  // Pulls the file directly from your public/ folder
-  const { scene } = useGLTF('public/models/macbook-14.glb'); 
-  return <primitive object={scene} scale={0.08} position={[0, 0, 0]} />;
-}
 
 const ProductViewer = () => {
     const {color, scale, setColor, setScale} = useMacbookStore(); // we are using the useMacbookStore hook to get the color, scale, setColor and setScale from our store, we are using destructuring to get these values from the store zustand made it very easy to do this 
@@ -54,10 +47,7 @@ const ProductViewer = () => {
         </div>
 
         <Canvas id="canvas" camera = {{ position : [0,2,5], fov:50, near: 0.1, far:100 }}>
-            {/* <Box position = {[ 0,0,0]} scale = {10 * scale} material-color={color} ></Box> */}
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <Model />
+            {<Box position = {[ 0,0,0]} scale = {10 * scale} material-color={color} ></Box>}
         <OrbitControls enableZoom={false}/>
         </Canvas>
 
@@ -65,3 +55,4 @@ const ProductViewer = () => {
 )
 }
 export default ProductViewer
+
