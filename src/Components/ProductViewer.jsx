@@ -4,12 +4,17 @@ import { Canvas } from "@react-three/fiber";
 import {Box, OrbitControls} from "@react-three/drei"
 import React, { Suspense } from 'react';
 import MacbookModel14 from "./models/Macbook-14";
-import Studiolight from "./models/StudioLights";
+import Studiolight from "./three/StudioLights.jsx";
+import ModelSwitcher from './three/ModelSwitcher.jsx'
+import { useMediaQuery } from "react-responsive";
 
 
 const ProductViewer = () => {
     const {color, scale, setColor, setScale} = useMacbookStore(); // we are using the useMacbookStore hook to get the color, scale, setColor and setScale from our store, we are using destructuring to get these values from the store zustand made it very easy to do this 
     //managing it in a global state
+    
+    const isMobile = useMediaQuery({query: '(max-width:1024px'})
+
     return (
     <section id="product-viewer">
         <h2>Take a closer look</h2>
@@ -52,11 +57,12 @@ const ProductViewer = () => {
             <ambientLight intensity={1} />
             <Studiolight />
             <MacbookModel14 scale ={0.06} position={[0,0,0]} />
-        <OrbitControls enableZoom={false}/>
+        <ModelSwitcher sca0le={isMobile ? scale= 0.03 : scale}  isMobile={isMobile}/>
+        {/*fool scale to make it look better on mobile devices */}
         </Canvas>
 
     </section>
 )
 }
 export default ProductViewer
-
+//three js componenets cannot be a dev they either have to be a mesh or a group cause they r always renedred in a canvas rather than anywhere else
