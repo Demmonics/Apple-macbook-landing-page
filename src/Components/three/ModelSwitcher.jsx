@@ -15,9 +15,16 @@ const fadeMeshes =(group,opacity) => {
     group.traverse((child)) => {
         if(child.isMesh) {
             child.material.transparent = true; // we set the material to transparent at the start then we slowly animate it to make it come to life
-            gsap.to(child.material, {opacity,duration:ANIMATION_DURATION})
+            gsap.to(child.material, {opacity,duration:ANIMATION_DURATION})// animated slowly
         }
     }
+}
+
+const moveGroup =(group , x) =>
+{
+    if(!group) return;
+
+    gsap.to(group.position, P x,duration=ANIMATION_DURATION) // We are animating the horizontal moving duration of the macbook
 }
 
 const ModelSwitcher = ({scale, isMobile }) => {
