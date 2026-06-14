@@ -13,7 +13,7 @@ const ProductViewer = () => {
     const {color, scale, setColor, setScale} = useMacbookStore(); // we are using the useMacbookStore hook to get the color, scale, setColor and setScale from our store, we are using destructuring to get these values from the store zustand made it very easy to do this 
     //managing it in a global state
     
-    const isMobile = useMediaQuery({query: '(max-width:1024px'})
+    const isMobile = useMediaQuery({query: '(max-width:1024px)'})
 
     return (
     <section id="product-viewer">
@@ -57,8 +57,8 @@ const ProductViewer = () => {
             <ambientLight intensity={1} />
             <Studiolight />
             <MacbookModel14 scale ={0.06} position={[0,0,0]} />
-        <ModelSwitcher sca0le={isMobile ? scale= 0.03 : scale}  isMobile={isMobile}/>
-        {/*fool scale to make it look better on mobile devices */}
+        <ModelSwitcher scale={isMobile ? scale - 0.03 : scale}  isMobile={isMobile}/>
+        
         </Canvas>
 
     </section>
@@ -66,3 +66,4 @@ const ProductViewer = () => {
 }
 export default ProductViewer
 //three js componenets cannot be a dev they either have to be a mesh or a group cause they r always renedred in a canvas rather than anywhere else
+//fool scale to make it look better on mobile devices 
