@@ -5,6 +5,7 @@ import MacbookModel from "../models/Macbook";
 import MacbookModel16 from "../models/Macbook-16";
 import MacbookModel14 from "../models/Macbook-14";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const ANIMATION_DURATION =1;
 const OFFSET_DISTANCE=5;// this is how far one model will move off screen when its hidden
@@ -33,6 +34,28 @@ const ModelSwitcher = ({scale, isMobile }) => {
     const largeMacbookRef = useRef();// these two r from react
 
     const showLargeMacbook = scale === 0.08 || scale === 0.05 ;
+
+    useGSAP(() => {
+        if(showLargeMacbook)
+        {
+            moveGroup(smallMacbookRef.current, -OFFSET_DISTANCE);
+            moveGroup(largeMacbookRef.current, 0);
+
+            fadeMeshes(smallMacbookRef.current, 0);
+            fadeMeshes(largeMacbookRef.current, 1);
+
+        }
+
+        else
+        {
+            moveGroup(smallMacbookRef.current, 0);
+            moveGroup(largeMacbookRef.current, OFFSET_DISTANCE);
+
+            fadeMeshes(smallMacbookRef.current, 1);
+            fadeMeshes(largeMacbookRef.current, 0);
+
+        }
+    },[scale])
 
     const controlsConfig ={
         snap: true,
@@ -78,3 +101,7 @@ The parser is seeing:
 and thinking:
 "Why are you assigning inside an object definition?"
 */
+
+//a utility function is a function we create so that we dont have to do the same task twice like addition or subtraction func in this we have made an animation utility funciton which we r going to call later
+
+//...config takes every property inside the object and then passes it off as a prop it is like a template
