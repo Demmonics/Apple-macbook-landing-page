@@ -39,7 +39,7 @@ return (
     position={0,15,5}
     angle ={0.15}
     decay= {0}
-    intensity={Math.PI * 0.2}
+    intensity={Math.PI * 1}
     />
     </group>
 );
