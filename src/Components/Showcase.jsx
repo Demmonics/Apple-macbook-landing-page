@@ -12,7 +12,7 @@ const Showcase = (() => {
                     trigger: '#showcase',
                     start: 'top top',
                     end: 'bottom top',
-                    scrub: true,
+                    scrub: true,//to animate timeline with scroll
                     pin: true,
 
                 }
@@ -54,8 +54,7 @@ const Showcase = (() => {
                         </div>
 
                     </div>
-                </div>
-                <div className="max-w-3xs space-y-14">
+                    <div className="max-w-3xs space-y-14">
                     <div className="space-y-2">
                         <p> Up to</p>
                         <h3>4x faster</h3>
@@ -68,6 +67,7 @@ const Showcase = (() => {
                         <h3>1.5x faster</h3>
                         <p>CPU rendering performance than M2</p>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
