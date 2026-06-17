@@ -3,6 +3,7 @@ import NavBar from "./Components/NavBar"
 import ProductViewer from "./Components/ProductViewer"
 import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from "gsap/all";
+import Showcase from "./Components/Showcase";
 // ScrollTrigger lets us animate things like pinning, scrubbing,
 // and triggering animations based on scroll position.
 
@@ -14,6 +15,7 @@ const App = () => {
       <NavBar />
       <Hero />
       <ProductViewer />
+      <Showcase />
     </main>
   )
 }
