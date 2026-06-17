@@ -8,7 +8,7 @@ const navLinks = [
 ];
 
 const noChangeParts = [
-    "Object_84",
+    "Object_84",//check if the colour is outer or inner part of the macbook
     "Object_37",
     "Object_34",
     "Object_12",
