@@ -29,7 +29,7 @@ export default function MacbookModel16(props) {
       }
     }
   });
-}, [color]);
+}, [color,scene]);
 
   return (
     <group {...props} dispose={null}>
@@ -59,3 +59,5 @@ export default function MacbookModel16(props) {
 }
 
 useGLTF.preload('/models/macbook-16-transformed.glb')
+//object 58 is keyboard
+//object 42 is bottom
