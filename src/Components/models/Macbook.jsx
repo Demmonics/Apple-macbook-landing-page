@@ -9,11 +9,27 @@ Title: macbook pro M3 16 inch 2024
 */
 
 import React from 'react'
-import { useGLTF, useTexture } from '@react-three/drei'
+import { noChangeParts } from '../../constants';
+import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei'
 
 export default function MacbookModel(props) {
-  const { nodes, materials } = useGLTF('/model/macbook-transformed.glb')
-  const texture = useTexture('/screen.png');
+  const {color , texture, } = useMacbookStore();
+  const { nodes, materials, scene } = useGLTF('/model/macbook-transformed.glb')
+
+  const screen = useVideoTexture(texture)
+  
+  useEffect(() => {
+  scene.traverse((child) => {
+    if (child.isMesh) {
+      // change color only if the part name is NOT noChange part mein
+    //no change shit will come from constants
+      if (!noChangeParts.includes(child.name)) {
+        child.material.color = new THREE.Color(color);
+      }
+    }
+  });
+}, [color,scene]);
+
   return (
     
     <group {...props} dispose={null}>
@@ -35,7 +51,7 @@ export default function MacbookModel(props) {
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_123.geometry}  rotation={[Math.PI / 2, 0, 0]}>
-      <meshBasicMaterial map = {texture}/>
+      <meshBasicMaterial map = {screen}/>
       </mesh>
       <mesh geometry={nodes.Object_127.geometry} material={materials.ZCDwChwkbBfITSW} rotation={[Math.PI / 2, 0, 0]} />
     </group>

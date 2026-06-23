@@ -1,6 +1,6 @@
 import { Environment, Lightformer } from "@react-three/drei";
 
-const Studiolight = () => {
+const Studiolights = () => {
 return (
     <group name="lights">
       {/* we are using groups because divs don't render inside Canvas */}
@@ -24,19 +24,19 @@ return (
         </group>
     </Environment>
     <spotLight
-    position={-2,10,5}
+    position={-2, 10, 5}
     angle ={0.15}
     decay= {0}
     intensity={Math.PI * 0.2}
     />
     <spotLight
-    position={0,-25,10}
+    position={0, -25, 10}
     angle ={0.15}
     decay= {0}
     intensity={Math.PI * 0.2}
     />
     <spotLight
-    position={0,15,5}
+    position={0, 15, 5}
     angle ={0.15}
     decay= {0}
     intensity={Math.PI * 1}
@@ -45,4 +45,4 @@ return (
 );
 };
 
-export default Studiolight;
+export default Studiolights;

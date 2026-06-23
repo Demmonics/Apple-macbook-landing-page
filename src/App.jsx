@@ -4,6 +4,9 @@ import ProductViewer from "./Components/ProductViewer"
 import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Showcase from "./Components/Showcase";
+import Performance from "./Components/three/Performance";
+import  Features  from "./Components/three/Features";
+import Highlights from "./Components/three/Highlights";
 // ScrollTrigger lets us animate things like pinning, scrubbing,
 // and triggering animations based on scroll position.
 
@@ -16,6 +19,9 @@ const App = () => {
       <Hero />
       <ProductViewer />
       <Showcase />
+      <Performance />
+      <Features />
+      <Highlights />
     </main>
   )
 }

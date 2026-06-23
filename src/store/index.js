@@ -1,3 +1,4 @@
+import { storageTexture } from "three/tsl";
 import { create } from "zustand";
 
 const useMacbookStore = create((set) => ({ // we are creating a store using zustand, and we are passing a function that takes set as an argument. This function will return an object that contains the state of our store and the actions that we can use to update the state.
@@ -6,6 +7,9 @@ const useMacbookStore = create((set) => ({ // we are creating a store using zust
 
     scale:0.08,
     setScale: (scale) => set({scale}),
+
+    texture : '/videos/feature-1.mp4',
+    setTexture :(texture) => ({texture}),
 
     reset: () => set({ color: "#2e2c2e", scale:0.08 }),// this line is creating an action called reset, which will reset the color and scale to their initial values when called 
     // the reset function is a callback funtion
