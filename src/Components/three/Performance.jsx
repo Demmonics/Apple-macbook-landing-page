@@ -9,6 +9,7 @@ const Performance = () => {
     const sectionRef = useRef(null);
 
     useGSAP(
+        
         () => {
             const sectionEl = sectionRef.current;
             if (!sectionEl) return;
