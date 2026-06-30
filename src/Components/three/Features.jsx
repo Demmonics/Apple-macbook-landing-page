@@ -27,7 +27,7 @@ const ModelScroll =() => {
             })
             v.load();
         })
-    }, [])
+    }, []);
 
     useGSAP(() => {
         //for the 3d model rotation wala animation
@@ -38,8 +38,20 @@ const ModelScroll =() => {
                 end: 'bottom top',
                 scrub: 1,
                 pin: true,
+            }})
+            //Now we are going to sync the feature contents
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                trigger : '#f-canvas',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+                pin: true,
+            }})
+            // Now for the 3d spin shit
+            if(group.Ref.current){
+                modelTimeLine.to(groupRef.current.rotation, { y:Math.PI *2, ease: 'power.in'})
             }
-        })
     },[]);
     return(
         <group ref={groupRef}>
