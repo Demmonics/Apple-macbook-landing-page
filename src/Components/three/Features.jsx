@@ -7,7 +7,8 @@ import { Suspense, useEffect, useRef } from "react";
 import MacbookModel from "../models/Macbook.jsx";
 import { useMediaQuery } from "react-responsive";
 import useMacbookStore from "../../store/index.js";
-
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 const ModelScroll =() => {
     const groupRef = useRef(null);
     const isMobile = useMediaQuery({ query:'(max-width: 1024px)'})
@@ -27,6 +28,19 @@ const ModelScroll =() => {
             v.load();
         })
     }, [])
+
+    useGSAP(() => {
+        //for the 3d model rotation wala animation
+        const modelTimeLine = gsap.timeline({
+            scrollTrigger: {
+                trigger : '#f-canvas',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+                pin: true,
+            }
+        })
+    },[]);
     return(
         <group ref={groupRef}>
             <Suspense fallback ={<Html> <h1 className="text-white text-3xl uppercase">Loading...</h1></Html>} >
